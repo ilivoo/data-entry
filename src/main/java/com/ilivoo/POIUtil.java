@@ -7,7 +7,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.POITextExtractor;
 import org.apache.poi.extractor.ExtractorFactory;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.hwpf.extractor.WordExtractor;
 import org.apache.poi.poifs.filesystem.FileMagic;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
@@ -15,8 +14,6 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
-import org.apache.poi.xwpf.usermodel.XWPFDocument;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -152,8 +149,7 @@ public class POIUtil {
                 }
                 rowNum++;
             }
-            FileUtil.ensureNoFile(filePath);
-            workbook.write(new FileOutputStream(filePath));
+            workbook.write(new FileOutputStream(FileUtil.newFile(filePath)));
         } catch (Exception e) {
             System.out.println("读取文件失败: " + filePath);
             throw new RuntimeException(e);

@@ -89,7 +89,7 @@ public class Main {
         int findIndex = 0;
         for (int k = 0; k < lineKeyValue.size(); k++) {
             List<String> keyLine = lineKeyValue.get(k);
-            for (int i = 0; i < keyLine.size() - 1; i++) {//trash last
+            for (int i = 0; i < keyLine.size(); i++) {//trash last
                 String rawKey = trimKey(keyLine.get(i));
                 if (key.equals(rawKey)) {
                     if (index == findIndex) {

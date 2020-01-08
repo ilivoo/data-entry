@@ -31,13 +31,8 @@ public class FileUtil {
         return result;
     }
 
-    public static boolean ensureNoFile(String filePath) throws IOException {
+    public static String newFile(String filePath) {
         Path path = Paths.get(filePath);
-        if (Files.exists(path) && Files.isRegularFile(path)) {
-            Files.delete(path);
-        } else {
-            throw new RuntimeException(filePath + ": is not regular file");
-        }
-        return true;
+        return Paths.get(path.getParent().toString(), "new_" + path.getFileName()).toString();
     }
 }
